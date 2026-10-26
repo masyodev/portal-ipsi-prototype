@@ -1,0 +1,15 @@
+PANDUAN EVALUASI THEME IPSI
+Versi 1.1 - 23 Oktober 2026
+
+DOKUMEN SINTETIK UNTUK PROTOTIPE
+Bukan regulasi, keputusan, atau informasi resmi IPSI.
+
+1. Buka homepage dan periksa hierarki berita, agenda, serta ranking.
+2. Gunakan menu desktop dengan pointer dan keyboard.
+3. Buka halaman berita, event, pesilat, organisasi, media, dan dokumen.
+4. Uji filter, pagination, breadcrumb, dan tombol kembali browser.
+5. Periksa tampilan pada lebar 360, 390, 768, 1024, dan 1440 piksel.
+6. Sampaikan persetujuan desain sebelum integrasi Laravel Phase 1C.
+
+Seluruh fixture bersifat demonstrasi. Prototipe tidak menggunakan
+database, autentikasi backend, atau integrasi API.

@@ -1,0 +1,57 @@
+/* Ranking-only table controls; column sizing and cell padding remain in styles.css. */
+.ipsi-data-table th.ipsi-sortable {
+  position: relative;
+}
+
+.ipsi-sortable-button {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-inline: 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ipsi-sortable.ipsi-col-rank .ipsi-sortable-button {
+  justify-content: center;
+}
+
+.ipsi-sortable.ipsi-col-number .ipsi-sortable-button {
+  justify-content: flex-end;
+}
+
+.ipsi-sortable-button:hover {
+  background: var(--interactive-hover);
+}
+
+.ipsi-sortable-button:focus-visible {
+  outline: 2px solid var(--theme-action);
+  outline-offset: -3px;
+}
+
+.ipsi-sort-icon {
+  position: absolute;
+  top: 50%;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.ipsi-sortable[aria-sort] .ipsi-sort-icon {
+  color: var(--theme-action);
+}
