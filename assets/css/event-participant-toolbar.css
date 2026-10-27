@@ -1,4 +1,14 @@
 /* Event participant toolbar adapts the approved IPSI filter layout inside the detail panel. */
+#event-participant-table .event-participant-table {
+  table-layout: fixed;
+  min-width: 600px;
+  white-space: normal;
+}
+
+#event-participant-table col.event-participant-col-entry { width: 35%; }
+#event-participant-table col.event-participant-col-number { width: 65%; }
+#event-participant-table .event-participant-table :is(th, td) { overflow-wrap: anywhere; }
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .event-participant-toolbar .ipsi-filter-main {
     grid-template-columns: repeat(2, minmax(0, 1fr)) 44px;
