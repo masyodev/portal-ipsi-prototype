@@ -17,7 +17,7 @@
 .federation-gateway { display: block; padding: 18px; border: 1px solid var(--border-neutral); border-left: 3px solid var(--ipsi-red); border-radius: 6px; background: white; }
 .federation-gateway strong,.federation-gateway small { display: block; }
 .federation-gateway small { color: var(--text-secondary); margin-top: 7px; }
-.federation-gateway:hover strong { color: var(--ipsi-red); text-decoration: underline; }
+.federation-gateway:hover strong { color: var(--ipsi-red); }
 /* Read-only mockup/sejarah.html composition: horizontal track, oversized watermark,
    content at left, Previous/Next beside it, vertical milestone indicators at right. */
 .history-introduction { max-width: 1200px; margin: 0 auto 12px; font-size: 13px; color: var(--text-secondary); }
@@ -33,6 +33,11 @@
 .history-content .timeline-slide p { color: var(--text-secondary); font-size: 16px; margin: 14px 0 0; }
 .history-content .timeline-slide .watermark { position: absolute; right: 10%; font-size: 200px; font-weight: 700; color: var(--ipsi-red); opacity: .055; line-height: 1; z-index: 1; pointer-events: none; user-select: none; }
 .history-content .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; background: var(--surface-white); color: var(--ipsi-red); border: 1px solid var(--border-neutral); font-size: 22px; cursor: pointer; border-radius: 50%; box-shadow: var(--card-shadow); z-index: 3; }
+.history-content .nav-btn svg { width: 20px; height: 20px; }
+.history-content .nav-btn::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); z-index: 2; width: max-content; padding: 6px 9px; border-radius: 6px; background: var(--night); color: white; font-size: 12px; line-height: 1.3; box-shadow: var(--shadow-menu); opacity: 0; visibility: hidden; pointer-events: none; }
+.history-content .nav-btn.left::after { left: 0; }
+.history-content .nav-btn.right::after { right: 0; }
+.history-content .nav-btn:is(:hover,:focus-visible)::after { opacity: 1; visibility: visible; }
 .history-content .nav-btn.left { left: 0; }
 .history-content .nav-btn.right { right: 60px; }
 .history-content .nav-btn:disabled { color: #7b8588; background: #f0f2ef; cursor: default; }
@@ -57,6 +62,11 @@
 .perguruan-card h3 { margin: 0 0 8px; overflow-wrap: anywhere; }
 .perguruan-card .perguruan-alias { color: var(--text-secondary); font-size: 13px; margin: 0 0 6px; }
 .perguruan-card .editorial-pending { font-size: 13px; }
+#perguruan-results.perguruan-grid--list { grid-template-columns: minmax(0,1fr); }
+#perguruan-results.perguruan-grid--list .perguruan-card { display: grid; grid-template-columns: 72px minmax(0,1fr) auto; column-gap: 18px; align-items: center; }
+#perguruan-results.perguruan-grid--list .perguruan-card-top { grid-column: 1; grid-row: 1 / 4; margin-bottom: 0; }
+#perguruan-results.perguruan-grid--list .perguruan-card > :is(h3,p) { grid-column: 2; }
+#perguruan-results.perguruan-grid--list .perguruan-card > .text-link { grid-column: 3; grid-row: 1 / 4; }
 .perguruan-filters { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 16px; align-items: end; }
 .perguruan-filters input,.perguruan-filters select { min-width: 0; width: 100%; }
 .perguruan-filter-help { font-size: 12px; color: var(--text-secondary); margin: 12px 0 0; }
@@ -72,6 +82,7 @@
 @media(max-width:1100px) { .perguruan-filters { grid-template-columns: 1fr 1fr; } .perguruan-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:768px) { .federation-columns { grid-template-columns: 1fr; } .federation-gateways { grid-template-columns: 1fr; } .federation-content { padding-top: 24px; } }
 @media(max-width:560px) { .perguruan-grid,.perguruan-filters,.perguruan-facts { grid-template-columns: 1fr; } .federation-panel { padding: 18px; } .federation-identity-panel { gap: 16px; align-items: start; } .federation-identity-panel img { width: 54px; height: 70px; } .perguruan-profile { align-items: start; gap: 14px; } .perguruan-profile .perguruan-logo-placeholder { width: 58px; min-width: 58px; height: 58px; } }
+@media(max-width:560px) { #perguruan-results.perguruan-grid--list .perguruan-card { grid-template-columns: 58px minmax(0,1fr); column-gap: 12px; } #perguruan-results.perguruan-grid--list .perguruan-card > .text-link { grid-column: 2; grid-row: auto; } }
 @media(max-width:768px) {
  .history-content .timeline-wrapper { padding: 26px 30px; }
  .history-content .timeline-slide { min-height: 250px; }
@@ -89,6 +100,7 @@
  .history-content .timeline-slide .line { width: 70px; }
  .history-content .timeline-slide .watermark { font-size: 140px; right: 8%; top: 12px; }
  .history-content .nav-btn { width: 44px; height: 44px; font-size: 19px; }
+ .history-content .nav-btn svg { width: 18px; height: 18px; }
  .history-content .nav-btn.right { right: 44px; }
  .history-content .dots { right: 0; }
  .federation-gateways-pair { grid-template-columns: 1fr; }

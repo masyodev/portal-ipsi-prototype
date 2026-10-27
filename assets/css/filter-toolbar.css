@@ -1,4 +1,4 @@
-/* IPSI Filter Toolbar v1: scoped to the full Ranking page. */
+/* IPSI Filter Toolbar v1: shared by Ranking and approved directory pages. */
 .ipsi-filter-toolbar .tabs {
   margin-bottom: 14px;
 }
@@ -17,6 +17,75 @@
 
 .ipsi-filter-main > * {
   min-width: 0;
+}
+
+/* G03: the approved shell also supports the field counts on public listings. */
+.ipsi-filter-main--compact {
+  grid-template-columns: minmax(0, 1.077fr) minmax(0, 1fr) 44px;
+}
+
+.ipsi-filter-main--calendar {
+  grid-template-columns: minmax(0, 1.077fr) repeat(3, minmax(0, 1fr)) 44px;
+}
+
+.ipsi-filter-main--with-view {
+  grid-template-columns: minmax(0, 1.077fr) minmax(0, 1fr) max-content;
+}
+
+.ipsi-filter-main--directory {
+  grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 1fr)) max-content;
+}
+
+.ipsi-filter-main--directory-short {
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 1fr)) max-content;
+}
+
+.ipsi-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+/* Same icon, pressed state and tooltip contract as the approved athlete switch. */
+.ipsi-icon-view-switch button {
+  position: relative;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ipsi-icon-view-switch button:focus-visible {
+  outline: 2px solid var(--theme-action);
+  outline-offset: 2px;
+}
+
+.ipsi-icon-view-switch button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 2;
+  width: max-content;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: var(--night);
+  color: white;
+  font-size: 12px;
+  line-height: 1.3;
+  box-shadow: var(--shadow-menu);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ipsi-icon-view-switch button:is(:hover, :focus-visible)::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .ipsi-filter-toolbar .ipsi-filter-main :is(input, select) {
@@ -82,6 +151,26 @@
   .ipsi-search-field {
     grid-column: 1 / -1;
   }
+
+  .ipsi-filter-main--compact {
+    grid-template-columns: minmax(0, 1fr) 44px;
+  }
+
+  .ipsi-filter-main--with-view {
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .ipsi-filter-main--directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) max-content;
+  }
+
+  .ipsi-filter-main--directory-short {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) max-content;
+  }
+
+  .ipsi-filter-main--directory .ipsi-filter-select--directory-last {
+    grid-column: 1 / 3;
+  }
 }
 
 @media (max-width: 767px) {
@@ -93,6 +182,39 @@
   .ipsi-filter-select--province {
     grid-column: 1 / -1;
   }
+
+  .ipsi-filter-main--compact .ipsi-search-field,
+  .ipsi-filter-main--calendar .ipsi-search-field,
+  .ipsi-filter-main--calendar .ipsi-filter-select--month,
+  .ipsi-filter-main--calendar .ipsi-filter-select--category {
+    grid-column: 1 / -1;
+  }
+
+  .ipsi-filter-main--with-view {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ipsi-filter-main--with-view .ipsi-search-field {
+    grid-column: auto;
+  }
+
+  .ipsi-filter-main--directory {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ipsi-filter-main--directory-short {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ipsi-filter-main--directory .ipsi-filter-select--directory-last {
+    grid-column: auto;
+  }
+
+  .ipsi-icon-view-switch button {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
 }
 
 @media (max-width: 350px) {
@@ -103,5 +225,17 @@
   .ipsi-search-field,
   .ipsi-filter-select--province {
     grid-column: auto;
+  }
+
+  .ipsi-filter-main--with-view {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ipsi-filter-main--directory {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ipsi-filter-main--directory-short {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

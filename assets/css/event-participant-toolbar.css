@@ -1,0 +1,21 @@
+/* Event participant toolbar adapts the approved IPSI filter layout inside the detail panel. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .event-participant-toolbar .ipsi-filter-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) 44px;
+  }
+
+  .event-participant-toolbar .ipsi-search-field {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .event-participant-toolbar .ipsi-filter-main {
+    grid-template-columns: minmax(0, 1fr) 44px;
+  }
+
+  .event-participant-toolbar .ipsi-search-field,
+  .event-participant-toolbar .event-participant-age {
+    grid-column: 1 / -1;
+  }
+}
