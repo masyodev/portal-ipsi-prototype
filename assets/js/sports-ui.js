@@ -6,7 +6,7 @@
  const get=id=>document.getElementById(id);
  const opt=(items,all='Semua')=>`<option value="">${all}</option>`+items.map(x=>`<option value="${U.esc(x.id)}">${U.esc(x.name)}</option>`).join('');
  const select=(id,label,items,all)=>`<label class="field"><span>${label}</span><select id="${id}">${opt(items,all)}</select></label>`;
- const banner=(title,desc)=>`<div class="page-banner"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Beranda</a><span>/</span><span>${title}</span></nav><span class="eyebrow">PENCAK SILAT INDONESIA</span><h1>${title}</h1><p>${desc}</p></div></div>`;
+ const banner=(title,desc)=>`<div class="page-banner"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Beranda</a><span>/</span><span>${title}</span></nav><span class="eyebrow">PENCAK SILAT INDONESIA</span><h1>${title}</h1></div></div>`;
  const note='<div class="demo-label">Data simulasi untuk pengembangan Portal IPSI; bukan catatan resmi pesilat atau kompetisi.</div>';
  const athleteLink=id=>{const a=find(S.athletes,id);return `<a href="athlete-profile.html?id=${id}">${U.esc(a.name)}</a>`;};
  const entryName=p=>p.team_id?`${U.esc(find(S.teams,p.team_id).name)}<br><small>${members(p).map(athleteLink).join(' · ')}</small>`:athleteLink(p.athlete_id);

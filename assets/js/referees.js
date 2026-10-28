@@ -12,7 +12,7 @@ window.IPSI_REFEREE_DIRECTORY=(()=>{
  function encode(s){const p=new URLSearchParams();for(const k of ['q','group','level','province'])if(s[k])p.set(k,s[k]);if(s.page>1)p.set('page',s.page);return p.toString();}
  function back(){const q=encode(stateFrom(new URLSearchParams(query.get('from')||'')));return'referee.html'+(q?'?'+q:'');}
  const crumb=name=>`<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Beranda</a><span aria-hidden="true">/</span>${name?`<a href="${U.esc(back())}">Direktori Wasit/Juri</a><span aria-hidden="true">/</span><span aria-current="page">${U.esc(name)}</span>`:'<span aria-current="page">Direktori Wasit/Juri</span>'}</nav>`;
- const intro=(title,desc,name)=>`<section class="page-banner"><div class="container">${crumb(name)}<span class="eyebrow">TEKNIS OLAHRAGA · DATA DEMONSTRASI</span><h1>${U.esc(title)}</h1><p>${U.esc(desc)}</p></div></section>`;
+ const intro=(title,desc,name)=>`<section class="page-banner"><div class="container">${crumb(name)}<span class="eyebrow">TEKNIS OLAHRAGA · DATA DEMONSTRASI</span><h1>${U.esc(title)}</h1></div></section>`;
  const avatar=c=>`<span class="coach-avatar" role="img" aria-label="Avatar inisial sintetis ${U.esc(c.name)}"><span aria-hidden="true">${U.esc(c.avatar.initials)}</span><small aria-hidden="true">DEMO</small></span>`;
  const badges=c=>`<div class="coach-badges"><span class="tag tag-quiet">${U.esc(group(c.classificationGroup).label)}</span><span class="tag tag-quiet">${U.esc(level(c))}</span></div>`;
  const status=c=>c.licenseStatus?`<span class="coach-status">${U.esc(label(C.classifications.statuses,c.licenseStatus))} · simulasi</span>`:'';

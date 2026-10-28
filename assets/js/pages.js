@@ -6,7 +6,7 @@ window.IPSI_PAGES = (() => {
   const image = (file,alt,extra='') => `<img src="assets/images/${file}" alt="${U.esc(alt)}" width="830" height="556" ${extra}>`;
   const date = value => new Date(value+'T12:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
   const crumb = items => `<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Beranda</a>${items.map(([label,url])=>`<span aria-hidden="true">/</span>${url?`<a href="${url}">${U.esc(label)}</a>`:`<span aria-current="page">${U.esc(label)}</span>`}`).join('')}</nav>`;
-  const banner = (title,description,kicker,parents=[]) => `<section class="page-banner"><div class="container">${crumb([...parents,[title]])}<span class="eyebrow">${kicker}</span><h1>${U.esc(title)}</h1><p>${U.esc(description)}</p></div></section>`;
+  const banner = (title,description,kicker,parents=[]) => `<section class="page-banner"><div class="container">${crumb([...parents,[title]])}<span class="eyebrow">${kicker}</span><h1>${U.esc(title)}</h1></div></section>`;
   const notFound = (label,url) => {
     document.title=`Tidak ditemukan · IPSI`;
     main.innerHTML=banner(`${label} tidak ditemukan`,'ID tidak tersedia pada fixture atau URL belum lengkap.','HALAMAN TIDAK TERSEDIA')+`<section class="section container"><div class="empty-state" role="status"><h2>Periksa tautan Anda</h2><p>Data mungkin tidak tersedia pada prototipe ini.</p><a class="btn" href="${url}">Kembali ke direktori ${U.linkArrow}</a></div></section>`;

@@ -7,7 +7,7 @@ window.IPSI_COACH_DIRECTORY=(()=>{
  const label=(group,key)=>C.classifications[group].find(x=>x.value===key)?.label||'Belum dicantumkan';
  const disclaimer=()=>`<aside class="coach-disclaimer" aria-label="Keterangan data demonstrasi"><strong>Data pelatih sintetis.</strong> Seluruh identitas, pengalaman dan sertifikasi di halaman ini adalah contoh demonstrasi. ${U.esc(C.classifications.disclaimer)}</aside>`;
  const crumb=(name)=>`<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Beranda</a><span aria-hidden="true">/</span>${name?`<a href="${backURL()}">Direktori Pelatih IPSI</a><span aria-hidden="true">/</span><span aria-current="page">${U.esc(name)}</span>`:'<span aria-current="page">Direktori Pelatih IPSI</span>'}</nav>`;
- const intro=(title,subtitle,name)=>`<section class="page-banner"><div class="container">${crumb(name)}<span class="eyebrow">TEKNIS OLAHRAGA · DEMONSTRASI</span><h1>${U.esc(title)}</h1><p>${U.esc(subtitle)}</p></div></section>`;
+ const intro=(title,subtitle,name)=>`<section class="page-banner"><div class="container">${crumb(name)}<span class="eyebrow">TEKNIS OLAHRAGA · DEMONSTRASI</span><h1>${U.esc(title)}</h1></div></section>`;
  const avatar=c=>`<span class="coach-avatar" role="img" aria-label="Avatar inisial sintetis ${U.esc(c.name)}"><span aria-hidden="true">${U.esc(c.avatar.initials)}</span><small aria-hidden="true">DEMO</small></span>`;
  const status=c=>c.licenseStatus?`<span class="coach-status">${U.esc(label('statuses',c.licenseStatus))} · simulasi</span>`:'';
  const classifications=c=>`<div class="coach-badges"><span class="tag tag-quiet">${U.esc(label('levels',c.certificationLevel))}</span><span class="tag tag-quiet">Lisensi ${U.esc(label('scopes',c.licenseScope))}</span></div>`;
